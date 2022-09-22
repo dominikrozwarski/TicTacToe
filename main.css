@@ -1,0 +1,98 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    background: rgb(36, 92, 108);
+    color: white;
+}
+
+.questionMark{
+    position: absolute;
+    top: 24%;
+    right: 5%;
+    scale: 2;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    transition: color 0.3s;
+}
+.questionMark:hover{
+    color: rgb(133, 176, 187);
+}
+
+.info{
+    width: 200px;
+    height: 60px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 15px;
+    font-size: 12px;
+    top: 3%;
+    right: 3%;
+    position: absolute;
+    border: 1px solid white;
+}
+
+.active{
+    display: none;
+}
+
+
+
+h1{
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 1em;
+}
+
+h2{
+    margin-bottom: 1em;
+}
+
+.game{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.square{
+    width: 60px;
+    height: 60px;
+    border: 3px solid white;
+    text-align: center;
+    font-size: 48px;
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Caveat', cursive;
+}
+
+.butt{
+    margin: 15px;
+}
+
+
+button{
+    padding:0.5em 1em;
+    margin: 1em;
+    border-radius: 15px;
+    background: rgb(36, 92, 108);
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+    border: 3px solid rgb(255, 255, 255);
+}
+
+button:hover{
+    background: rgb(133, 176, 187);
+}
