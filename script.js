@@ -3,8 +3,11 @@ const questionMark = document.querySelector('.questionMark');
 const square = document.querySelectorAll('.square');
 const reset = document.querySelector('.restart');
 const winner = document.querySelector('.winner');
+const solo = document.querySelector('.solo');
+const ai = document.querySelector('.ai');
 let i = 0;
 let weHaveWinner = false;
+let mode = 0;
 
 const winningConditions = [
 	[0, 1, 2],
@@ -17,14 +20,31 @@ const winningConditions = [
 	[2, 4, 6],
 ];
 
+//selecting gamemode
+
+ai.addEventListener('click', () => {
+	mode = 1;
+	solo.style.background = 'none';
+	ai.style.background = 'gray';
+	resetAll();
+	return mode;
+});
+
+solo.addEventListener('click', () => {
+	mode = 0;
+	ai.style.background = 'none';
+	solo.style.background = 'gray';
+	resetAll();
+	return mode;
+});
+
 //winner Condition
 const checkWinner = () => {
 	winningConditions.forEach((win) => {
-		if (
-			square[win[0]].textContent == 'X' &&
-			square[win[1]].textContent == 'X' &&
-			square[win[2]].textContent == 'X'
-		) {
+		let a = square[win[0]].textContent;
+		let b = square[win[1]].textContent;
+		let c = square[win[2]].textContent;
+		if (a == 'X' && a == b && b == c) {
 			square[win[0]].style.color = 'red';
 			square[win[1]].style.color = 'red';
 			square[win[2]].style.color = 'red';
@@ -32,11 +52,7 @@ const checkWinner = () => {
 			weHaveWinner = true;
 			return weHaveWinner;
 		}
-		if (
-			square[win[0]].textContent == 'O' &&
-			square[win[1]].textContent == 'O' &&
-			square[win[2]].textContent == 'O'
-		) {
+		if (a == 'O' && a == b && b == c) {
 			square[win[0]].style.color = 'red';
 			square[win[1]].style.color = 'red';
 			square[win[2]].style.color = 'red';
@@ -47,10 +63,10 @@ const checkWinner = () => {
 	});
 };
 
-//addign inside x or o
+//addign inside x or o, solo mode
 square.forEach((sq) => {
 	sq.addEventListener('click', () => {
-		if (sq.textContent != '' || weHaveWinner) {
+		if (sq.textContent != '' || weHaveWinner || mode != 0) {
 			return;
 		}
 
@@ -66,6 +82,48 @@ square.forEach((sq) => {
 		draw();
 	});
 });
+
+//vs ai mode
+square.forEach((sq) => {
+	sq.addEventListener('click', () => {
+		if (sq.textContent != '' || weHaveWinner || mode != 1) {
+			return;
+		}
+
+		sq.style.color = 'moccasin';
+		sq.textContent = 'X';
+		checkWinner();
+		draw();
+
+		aimove();
+	});
+});
+
+//ai moves
+
+const aimove = () => {
+	let random = Math.floor(Math.random() * square.length);
+	let count = 0;
+	if (square[random].textContent != '') {
+		square.forEach((sq) => {
+			if (sq.textContent != '') {
+				count++;
+			}
+		});
+
+		if (count >= 9 || weHaveWinner) {
+			return;
+		} else {
+
+			aimove();
+		}
+	} else {
+		square[random].textContent = 'O';
+		square[random].style.color = 'rosybrown';
+	}
+	checkWinner();
+	draw()
+};
 
 //if draw happend
 const draw = () => {

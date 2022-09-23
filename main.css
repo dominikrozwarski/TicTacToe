@@ -30,6 +30,12 @@ body{
     color: rgb(133, 176, 187);
 }
 
+.container{
+    max-width: 1200px;
+    min-width: 650px;
+    margin: 0 auto;
+}
+
 .info{
     width: 200px;
     height: 60px;
@@ -40,11 +46,21 @@ body{
     top: 3%;
     right: 3%;
     position: absolute;
-    border: 1px solid white;
+    border: 3px solid white;
 }
 
 .active{
     display: none;
+}
+
+.gameplay{
+    position: absolute;
+    text-align: center;
+    border-radius: 25px;
+    padding: 1em;
+    top: 15%;
+    left: 3%;
+    
 }
 
 
@@ -56,6 +72,10 @@ h1{
 
 h2{
     margin-bottom: 1em;
+}
+
+.solo{
+    background: gray;
 }
 
 .game{
