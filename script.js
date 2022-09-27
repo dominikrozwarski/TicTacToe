@@ -102,6 +102,9 @@ square.forEach((sq) => {
 //ai moves
 
 const aimove = () => {
+	if(weHaveWinner){
+		return
+	}
 	let random = Math.floor(Math.random() * square.length);
 	let count = 0;
 	if (square[random].textContent != '') {
@@ -111,7 +114,7 @@ const aimove = () => {
 			}
 		});
 
-		if (count >= 9 || weHaveWinner) {
+		if (count >= 9) {
 			return;
 		} else {
 
