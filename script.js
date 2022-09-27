@@ -95,7 +95,8 @@ square.forEach((sq) => {
 		checkWinner();
 		draw();
 
-		aimove();
+		setTimeout(aimove, 100)
+		
 	});
 });
 
